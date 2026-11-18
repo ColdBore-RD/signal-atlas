@@ -1,0 +1,20 @@
+{
+  "about": "The hidden 'real world' behind the synthetic samples. The page never reads this file. It differs from the assumptions in data/materials.json on purpose, so that calibration has something to find.",
+  "seed": 20261114,
+  "start": "2026-11-14T05:00:00Z",
+  "hours": 24,
+  "stepSeconds": 300,
+  "localOffsetHours": -5,
+  "lossFactor": { "int-drywall": 1.4, "int-garage": 1.25, "concrete": 1.2, "ext-siding": 1.1, "ext-brick": 0.9, "glass-lowe": 0.8, "door-hollow": 1.0, "door-exterior": 1.1, "floor-wood": 1.25, "appliance-metal": 1.0, "masonry": 1.0, "cabinetry": 1.0 },
+  "n": { "2.4": 2.4, "5": 2.55 },
+  "apOffsetDb": { "home-router": -3.0, "mesh-a": 0.5, "mesh-b": -0.5, "mesh-c": -2.0 },
+  "shadowSigmaDb": 2.2,
+  "timeNoiseSigmaDb": 1.1,
+  "noiseFloorDbm": { "2.4": -95, "5": -98 },
+  "visibleAboveDbm": -92,
+  "microwave": { "bursts": [["12:10", "12:25"], ["18:40", "19:00"]], "peakRiseDb": 24, "fallDbPerMetre": 2.2, "otherFloorDb": 9 },
+  "offline": { "from": "14:05", "to": "16:35" },
+  "eveningCongestion": { "from": "19:00", "to": "22:30", "throughputFactor": 0.65, "extraLatencyMs": 3.5 },
+  "survey": { "at": "20:10", "pointsPerRoom": 3, "secondsPerPoint": 25 },
+  "neighbours": 9
+}

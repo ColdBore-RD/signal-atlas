@@ -1,0 +1,21 @@
+# systemd unit for the Pi collector. Copy to /etc/systemd/system/wifi-atlas-scan.service.
+# Put the settings in /etc/wifi-atlas/scan.env (mode 600, owner root). That file holds the
+# MQTT password, so it never goes into git.
+[Unit]
+Description=Signal Atlas Wi-Fi scanner and prober
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/wifi-atlas/scan.env
+ExecStart=/usr/bin/python3 /opt/wifi-atlas/collectors/pi/scan.py
+Restart=always
+RestartSec=10
+# iw scan needs this capability; nothing else is granted
+AmbientCapabilities=CAP_NET_ADMIN
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW
+NoNewPrivileges=true
+User=wifiatlas
+
+[Install]
+WantedBy=multi-user.target

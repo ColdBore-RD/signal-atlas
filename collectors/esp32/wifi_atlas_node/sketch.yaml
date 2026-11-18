@@ -1,0 +1,23 @@
+# arduino-cli build profiles for the Signal Atlas sensor node.
+#   arduino-cli compile --profile esp32
+#   arduino-cli upload  --profile esp32 -p COMx
+# Not compiled or flashed yet: the versions below were current when this was written.
+# Check them with `arduino-cli core search esp32` and `arduino-cli lib search PubSubClient`.
+profiles:
+  esp32:
+    notes: Classic ESP32 dev board (ESP32-WROOM-32, DevKit V1 and similar)
+    fqbn: esp32:esp32:esp32
+    platforms:
+      - platform: esp32:esp32 (3.0.7)
+        platform_index_url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+    libraries:
+      - PubSubClient (2.8)
+  esp32c3:
+    notes: ESP32-C3 boards with native USB (serial output over USB CDC)
+    fqbn: esp32:esp32:esp32c3:CDCOnBoot=cdc
+    platforms:
+      - platform: esp32:esp32 (3.0.7)
+        platform_index_url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+    libraries:
+      - PubSubClient (2.8)
+default_profile: esp32

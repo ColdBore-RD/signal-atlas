@@ -1,0 +1,36 @@
+---
+title: Signal Atlas data flow (display only)
+config:
+  theme: base
+  themeVariables:
+    background: "#ffffff"
+---
+flowchart LR
+  subgraph PLAN["Floor plan"]
+    SCAN["LiDAR scan export<br/>(Polycam DXF, CSV, GLB)"]
+    TRACE["Plan image<br/>traced in the page"]
+    DRAW["Rooms drawn<br/>on a grid"]
+  end
+  subgraph MEAS["Measurements (optional)"]
+    WALK["Walk survey<br/>laptop or Raspberry Pi"]
+    ESP["ESP32 sensors<br/>RSSI of every BSSID<br/>(not yet on hardware)"]
+    SYN["Synthetic day<br/>(demo house)"]
+  end
+  SCAN --> FP[("floorplan.json<br/>rooms, walls, doors, stairs")]
+  TRACE --> FP
+  DRAW --> FP
+  MAT["materials.json<br/>loss per wall, per band"] --> MODEL
+  FP --> MODEL["Propagation model<br/>multi-wall + floor loss"]
+  FP --> FDTD["WebGL2 FDTD solver<br/>waves through walls and doors"]
+  WALK --> CAL["Calibration<br/>ridge least squares"]
+  ESP -->|"MQTT, read-only bridge"| CAL
+  SYN --> CAL
+  CAL --> MODEL
+  MODEL --> UI["Signal Atlas page<br/>3D twin, signal map, metrics,<br/>24 h replay, privacy mode"]
+  FDTD --> UI
+  classDef src fill:#e3f2fd,stroke:#1565c0
+  classDef data fill:#fff3e0,stroke:#ef6c00
+  classDef out fill:#e8f5e9,stroke:#2e7d32
+  class SCAN,TRACE,DRAW,WALK,ESP,SYN src
+  class FP,MAT data
+  class UI out

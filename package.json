@@ -1,0 +1,25 @@
+{
+  "name": "signal-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Display-only 3D digital twin of a house with a live Wi-Fi wave simulation and signal map. The site itself needs no build step; npm is only used for the dev server tools and tests.",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "start:live-sim": "node tools/serve.mjs --live-sim",
+    "synth": "node data/synthetic/generate.mjs",
+    "synth:private": "node data/synthetic/generate.mjs --private",
+    "validate": "node tools/validate-floorplan.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:solver": "node tools/verify/solver-tests.mjs",
+    "verify:screens": "node tools/verify/screenshots.mjs",
+    "verify:privacy": "node tools/verify/privacy-check.mjs",
+    "verify:frames": "node tools/verify/frame-time.mjs",
+    "verify:smoke": "node tools/verify/smoke.mjs",
+    "verify:layout": "node tools/verify/layout-check.mjs",
+    "test:pi": "python3 -m unittest collectors/pi/test_scan.py collectors/pi/test_survey.py",
+    "verify:colours": "node tools/verify/check-colormap.mjs"
+  },
+  "devDependencies": {}
+}

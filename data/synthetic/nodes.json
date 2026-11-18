@@ -1,0 +1,352 @@
+{
+ "schemaVersion": 1,
+ "synthetic": true,
+ "about": "Where each sensor and device is. position null means unknown: the device is listed in the roaming tray. Type survey means every sample carries its own position.",
+ "nodes": [
+  {
+   "id": "esp32-01",
+   "name": "ESP32 Rec room",
+   "type": "esp32",
+   "mac": "02:a7:89:79:9c:c5",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "B",
+    "x": 2.65,
+    "y": 6.45
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-02",
+   "name": "ESP32 Under-garage storage",
+   "type": "esp32",
+   "mac": "02:a7:86:79:98:0c",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "B",
+    "x": 15.25,
+    "y": 2.85
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-03",
+   "name": "ESP32 Utility room",
+   "type": "esp32",
+   "mac": "02:a7:87:79:99:9f",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "B",
+    "x": 2.65,
+    "y": 1.95
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-04",
+   "name": "ESP32 Garage",
+   "type": "esp32",
+   "mac": "02:a7:84:79:94:e6",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "1",
+    "x": 15.25,
+    "y": 2.85
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-05",
+   "name": "ESP32 Family room",
+   "type": "esp32",
+   "mac": "02:a7:85:79:96:79",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "1",
+    "x": 8.15,
+    "y": 6.45
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-06",
+   "name": "ESP32 Kitchen",
+   "type": "esp32",
+   "mac": "02:a7:82:79:91:c0",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "1",
+    "x": 2.65,
+    "y": 6.45
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-07",
+   "name": "ESP32 Living room",
+   "type": "esp32",
+   "mac": "02:a7:83:79:93:53",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "1",
+    "x": 2.65,
+    "y": 1.95
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-08",
+   "name": "ESP32 Bonus room",
+   "type": "esp32",
+   "mac": "02:a7:90:79:a7:ca",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "2",
+    "x": 15.25,
+    "y": 2.85
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-09",
+   "name": "ESP32 Primary bedroom",
+   "type": "esp32",
+   "mac": "02:a7:91:79:a9:5d",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "2",
+    "x": 2.65,
+    "y": 6.45
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "esp32-10",
+   "name": "ESP32 Bedroom 2",
+   "type": "esp32",
+   "mac": "02:a7:0e:7c:ac:bb",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "2",
+    "x": 2.65,
+    "y": 1.95
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "pi-500",
+   "name": "Pi sensor Kitchen",
+   "type": "pi",
+   "mac": "02:a7:76:f4:c2:5b",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": {
+    "level": "1",
+    "x": 1.75,
+    "y": 7.15
+   },
+   "positionSource": "synthetic"
+  },
+  {
+   "id": "home-server",
+   "name": "Home server",
+   "type": "wired",
+   "position": {
+    "level": "B",
+    "x": 6.4,
+    "y": 1.95
+   },
+   "positionSource": "guess"
+  },
+  {
+   "id": "nas",
+   "name": "NAS",
+   "type": "wired",
+   "position": {
+    "level": "B",
+    "x": 6.9,
+    "y": 1.95
+   },
+   "positionSource": "guess"
+  },
+  {
+   "id": "tv-main",
+   "name": "Living room TV",
+   "type": "client",
+   "mac": "02:a7:8b:14:00:26",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": {
+    "level": "1",
+    "x": 8.95,
+    "y": 7.65
+   },
+   "positionSource": "guess"
+  },
+  {
+   "id": "printer",
+   "name": "Printer",
+   "type": "client",
+   "mac": "02:a7:65:c0:d7:2a",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "1",
+    "x": 1.65,
+    "y": 3.05
+   },
+   "positionSource": "guess"
+  },
+  {
+   "id": "webcam",
+   "name": "Webcam",
+   "type": "client",
+   "mac": "02:a7:40:9a:94:7f",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "1",
+    "x": 14.05,
+    "y": 3.75
+   },
+   "positionSource": "guess"
+  },
+  {
+   "id": "speaker-kitchen",
+   "name": "Kitchen smart speaker",
+   "type": "client",
+   "mac": "02:a7:a1:fa:04:06",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": {
+    "level": "1",
+    "x": 2.85,
+    "y": 6.25
+   },
+   "positionSource": "guess"
+  },
+  {
+   "id": "thermostat",
+   "name": "Thermostat",
+   "type": "client",
+   "mac": "02:a7:fb:0e:80:5f",
+   "bands": [
+    "2.4"
+   ],
+   "position": {
+    "level": "1",
+    "x": 6.75,
+    "y": 6.35
+   },
+   "positionSource": "guess"
+  },
+  {
+   "id": "console",
+   "name": "Game console",
+   "type": "client",
+   "mac": "02:a7:c1:43:13:0f",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": {
+    "level": "1",
+    "x": 9.35,
+    "y": 7.35
+   },
+   "positionSource": "guess"
+  },
+  {
+   "id": "phone-1",
+   "name": "Phone 1",
+   "type": "client",
+   "mac": "02:a7:4d:c6:be:00",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": null,
+   "positionSource": "unknown",
+   "note": "position unknown: shown in the roaming tray"
+  },
+  {
+   "id": "phone-2",
+   "name": "Phone 2",
+   "type": "client",
+   "mac": "02:a7:50:c6:c2:b9",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": null,
+   "positionSource": "unknown",
+   "note": "position unknown: shown in the roaming tray"
+  },
+  {
+   "id": "tablet-1",
+   "name": "Tablet",
+   "type": "client",
+   "mac": "02:a7:15:e1:64:2c",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": null,
+   "positionSource": "unknown",
+   "note": "position unknown: shown in the roaming tray"
+  },
+  {
+   "id": "laptop-1",
+   "name": "Laptop",
+   "type": "client",
+   "mac": "02:a7:d2:26:7b:d0",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": null,
+   "positionSource": "unknown",
+   "note": "position unknown: shown in the roaming tray"
+  },
+  {
+   "id": "survey-phone",
+   "name": "Walk-test phone",
+   "type": "survey",
+   "mac": "02:a7:8d:10:08:25",
+   "bands": [
+    "2.4",
+    "5"
+   ],
+   "position": null,
+   "positionSource": "per-sample"
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+  "about": "The levels of the house, lowest first. key is the folder name under the Polycam source folder. construction is a key of construction.levels in data/materials.json. The anchor level stays in place when levels are stacked; the others are moved onto it. A level with synthesizeIfMissing gets a labelled synthetic layout until its scan exists.",
+  "levels": [
+    { "key": "basement", "id": "B", "name": "Basement", "construction": "basement" },
+    { "key": "first-floor", "id": "1", "name": "First floor", "construction": "main", "anchor": true },
+    { "key": "second-floor", "id": "2", "name": "Second floor", "construction": "upper", "synthesizeIfMissing": true }
+  ]
+}

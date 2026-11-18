@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "about": "One place for every threshold the display uses. All values are dBm. Edit and reload.",
+  "coverage_threshold_dbm": -67,
+  "dead_zone_below_dbm": -75,
+  "bands": [
+    { "id": "excellent", "label": "Excellent", "min_dbm": -50 },
+    { "id": "good", "label": "Good", "min_dbm": -60 },
+    { "id": "fair", "label": "Fair", "min_dbm": -67 },
+    { "id": "weak", "label": "Weak", "min_dbm": -75 },
+    { "id": "poor", "label": "Poor", "min_dbm": -200 }
+  ],
+  "room_grade": {
+    "about": "A room gets its letter from the signal level that 90 percent of its floor area reaches or exceeds (the 10th percentile). This punishes a room with a weak corner.",
+    "statistic": "p10",
+    "letters": [
+      { "letter": "A", "min_dbm": -55 },
+      { "letter": "B", "min_dbm": -62 },
+      { "letter": "C", "min_dbm": -67 },
+      { "letter": "D", "min_dbm": -75 },
+      { "letter": "F", "min_dbm": -200 }
+    ]
+  },
+  "display_range_dbm": [-90, -35]
+}

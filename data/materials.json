@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "about": "Every construction assumption in one table. Nobody measured these walls. The values are typical for 1990s North American suburban houses. loss_db is the loss for one pass through the item, per band. reflection (0 to 1) is the share of wave amplitude that bounces off in the wave animation. Edit a number and reload the page. The calibration step then moves loss_db toward what the samples show; these numbers are its starting point.",
+  "bands": ["2.4", "5"],
+  "pathLoss": {
+    "about": "Log-distance model. pl0_db is the loss at 1 m: the free-space value (40.2 dB at 2.4 GHz, 46.9 dB at 5 GHz) plus 6 dB for the small antennas of sensors and phones. n is the path-loss exponent before walls are counted.",
+    "2.4": { "pl0_db": 46.2, "n": 2.2, "freq_mhz": 2437 },
+    "5": { "pl0_db": 52.9, "n": 2.3, "freq_mhz": 5300 }
+  },
+  "materials": {
+    "ext-siding": { "label": "Exterior wall: wood frame, sheathing, vinyl siding", "loss_db": { "2.4": 7, "5": 10 }, "reflection": 0.35, "thickness": 0.18, "basis": "assumed", "note": "Aluminium siding or foil-faced sheathing would lose 15 dB or more. Brick veneer: use ext-brick." },
+    "ext-brick": { "label": "Exterior wall: wood frame with brick veneer", "loss_db": { "2.4": 10, "5": 15 }, "reflection": 0.5, "thickness": 0.27, "basis": "assumed", "note": "Common on the front of 1990s suburban houses. Not used until you assign it to a wall." },
+    "int-drywall": { "label": "Interior wall: wood studs, drywall both sides", "loss_db": { "2.4": 3, "5": 4 }, "reflection": 0.2, "thickness": 0.12, "basis": "assumed" },
+    "int-garage": { "label": "Garage-to-house wall: insulated studs, fire-rated drywall", "loss_db": { "2.4": 4, "5": 6 }, "reflection": 0.25, "thickness": 0.15, "basis": "assumed" },
+    "concrete": { "label": "Poured-concrete foundation wall, 20 cm", "loss_db": { "2.4": 15, "5": 23 }, "reflection": 0.65, "thickness": 0.2, "basis": "assumed" },
+    "glass-lowe": { "label": "Low-E double-glazed window", "loss_db": { "2.4": 12, "5": 15 }, "reflection": 0.55, "thickness": 0.06, "basis": "assumed", "note": "The metal-oxide coating reflects radio. Published values run from 5 to 30 dB. Clear double glazing is about 3 dB." },
+    "door-hollow": { "label": "Interior hollow-core door (closed)", "loss_db": { "2.4": 2, "5": 3 }, "reflection": 0.12, "thickness": 0.06, "basis": "assumed" },
+    "door-exterior": { "label": "Exterior or garage-entry door: insulated steel or fibreglass (closed)", "loss_db": { "2.4": 7, "5": 10 }, "reflection": 0.5, "thickness": 0.08, "basis": "assumed" },
+    "door-garage": { "label": "Sectional steel garage door (closed)", "loss_db": { "2.4": 9, "5": 12 }, "reflection": 0.7, "thickness": 0.08, "basis": "assumed" },
+    "door-glass": { "label": "Sliding patio door, Low-E glass (closed)", "loss_db": { "2.4": 12, "5": 15 }, "reflection": 0.55, "thickness": 0.06, "basis": "assumed" },
+    "masonry": { "label": "Brick fireplace and chimney", "loss_db": { "2.4": 12, "5": 18 }, "reflection": 0.6, "thickness": 0.3, "basis": "assumed", "note": "Used for fixtures. The loss is for a path through the whole fixture." },
+    "appliance-metal": { "label": "Large metal appliance (range, washer, furnace)", "loss_db": { "2.4": 8, "5": 10 }, "reflection": 0.8, "thickness": 0.3, "basis": "assumed", "note": "Used for fixtures. The loss is for a path through the whole fixture." },
+    "cabinetry": { "label": "Counters and cabinets", "loss_db": { "2.4": 2, "5": 3 }, "reflection": 0.1, "thickness": 0.3, "basis": "assumed", "note": "Used for fixtures. The loss is for a path through the whole fixture." },
+    "open": { "label": "Open doorway or opening", "loss_db": { "2.4": 0, "5": 0 }, "reflection": 0, "thickness": 0, "basis": "definition" }
+  },
+  "floors": {
+    "floor-wood": { "label": "Wood-joist floor with subfloor and drywall ceiling", "loss_db": { "2.4": 9, "5": 13 }, "basis": "assumed" },
+    "floor-concrete": { "label": "Concrete floor slab", "loss_db": { "2.4": 18, "5": 25 }, "basis": "assumed" }
+  },
+  "construction": {
+    "about": "Which material the floor-plan importer (tools/trace/import_polycam.py) gives to each kind of wall, window and door. Every entry is an assumption: a LiDAR scan measures where a wall is, not what it is made of. Polycam also draws every wall 0.10 m thick (a drawing setting, not a measurement), so the thickness of a wall comes from its material above.",
+    "levels": {
+      "basement": { "exteriorWall": "concrete", "interiorWall": "int-drywall", "garageWall": "int-garage", "solidMass": "concrete", "window": "glass-lowe", "doorInterior": "door-hollow", "doorExterior": "door-exterior", "doorGarage": "door-garage", "doorPatio": "door-glass", "floorUnder": "floor-concrete" },
+      "main": { "exteriorWall": "ext-siding", "interiorWall": "int-drywall", "garageWall": "int-garage", "solidMass": "int-drywall", "window": "glass-lowe", "doorInterior": "door-hollow", "doorExterior": "door-exterior", "doorGarage": "door-garage", "doorPatio": "door-glass", "floorUnder": "floor-wood" },
+      "upper": { "exteriorWall": "ext-siding", "interiorWall": "int-drywall", "garageWall": "int-garage", "solidMass": "int-drywall", "window": "glass-lowe", "doorInterior": "door-hollow", "doorExterior": "door-exterior", "doorGarage": "door-garage", "doorPatio": "door-glass", "floorUnder": "floor-wood" }
+    },
+    "garageRoomPattern": "garage",
+    "garageDoorMinWidth_m": 2.4,
+    "patioDoorMinWidth_m": 1.5,
+    "interiorDoorState": "open",
+    "exteriorDoorState": "closed",
+    "doorStateNote": "Interior doors were open during the scan and are modelled open. Exterior, garage and garage-entry doors are modelled closed.",
+    "fixtures": {
+      "fireplace": { "type": "fireplace", "material": "masonry" },
+      "refrigerator": { "type": "appliance", "material": "appliance-metal" },
+      "stove": { "type": "appliance", "material": "appliance-metal" },
+      "oven": { "type": "appliance", "material": "appliance-metal" },
+      "dishwasher": { "type": "appliance", "material": "appliance-metal" },
+      "washer_dryer": { "type": "appliance", "material": "appliance-metal" }
+    },
+    "fixtureMinSide_m": 0.25,
+    "closeOuterWallGaps": true,
+    "closeOuterWallGapsNote": "Where the scan left a stretch of the outer edge of a level without a wall, the importer adds an exterior wall there and marks it. A house has no hole in its outer wall; the gap is where the scanner could not see.",
+    "floor_structure_m": 0.3,
+    "upperCeiling_m": 2.44
+  },
+  "defaults": {
+    "ceiling_height_m": { "basement": 2.4, "main": 2.7, "upper": 2.44 },
+    "floor_material": "floor-wood",
+    "device_height_m": 1.0,
+    "about": "Ceiling heights are assumed (8 ft upper floor, 9 ft main floor). Access points and sensors are assumed to sit 1 m above the floor unless a position gives z."
+  }
+}

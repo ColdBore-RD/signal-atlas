@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "about": "Public defaults. They describe the fully synthetic demo house. data/private/config.local.json, when present, overrides any key (deep merge). Private names and identifiers belong only in that private file.",
+  "paths": {
+    "floorplan": "data/synthetic/floorplan.json",
+    "nodes": "data/synthetic/nodes.json",
+    "samples": ["data/synthetic/samples.ndjson"],
+    "apPositions": "data/synthetic/ap-positions.json"
+  },
+  "private": {
+    "address": "",
+    "houseName": "Demo house"
+  },
+  "site": {
+    "northDeg": 0,
+    "northSource": "synthetic",
+    "frontDoor": null
+  },
+  "bands": [{ "id": "2.4", "label": "2.4 GHz" }, { "id": "5", "label": "5 GHz" }],
+  "bandsAbout": "The bands the page shows. A band needs an entry in pathLoss and a loss_db value per material in data/materials.json. Add a band there and list it here to use the same floor plan for another radio band.",
+  "mesh": { "model": "Wi-Fi 5 mesh point" },
+  "networks": {
+    "home": { "label": "Home router", "ssid": "Atlas-Home", "role": "Main router from the internet provider, dual band Wi-Fi 5", "upstream": null },
+    "mesh": { "label": "Mesh", "ssid": "Atlas-Mesh", "role": "Three-point Wi-Fi 5 mesh behind the home router", "upstream": "home" }
+  },
+  "aps": [
+    { "id": "home-router", "label": "Home router", "network": "home", "model": "Dual-band Wi-Fi 5 router", "tx_dbm": { "2.4": 19, "5": 21 }, "channel": { "2.4": 1, "5": 44 }, "bssid": { "2.4": "02:5a:01:00:00:24", "5": "02:5a:01:00:00:50" }, "position": { "level": "1", "x": 2.0, "y": 2.0, "source": "guess" } },
+    { "id": "mesh-a", "label": "Mesh point A (beside the router)", "network": "mesh", "kind": "mesh", "model": "Wi-Fi 5 mesh point", "tx_dbm": { "2.4": 19, "5": 21 }, "channel": { "2.4": 6, "5": 149 }, "bssid": { "2.4": "02:5a:02:00:01:24", "5": "02:5a:02:00:01:50" }, "position": { "level": "1", "x": 2.4, "y": 2.0, "source": "guess" } },
+    { "id": "mesh-b", "label": "Mesh point B", "network": "mesh", "kind": "mesh", "model": "Wi-Fi 5 mesh point", "tx_dbm": { "2.4": 19, "5": 21 }, "channel": { "2.4": 6, "5": 149 }, "bssid": { "2.4": "02:5a:02:00:02:24", "5": "02:5a:02:00:02:50" }, "position": { "level": "1", "x": 10.0, "y": 6.0, "source": "guess" } },
+    { "id": "mesh-c", "label": "Mesh point C", "network": "mesh", "kind": "mesh", "model": "Wi-Fi 5 mesh point", "tx_dbm": { "2.4": 19, "5": 21 }, "channel": { "2.4": 6, "5": 149 }, "bssid": { "2.4": "02:5a:02:00:03:24", "5": "02:5a:02:00:03:50" }, "position": { "level": "2", "x": 6.0, "y": 5.0, "source": "guess" } }
+  ],
+  "wiredReferences": ["home-server", "nas"],
+  "live": { "url": "/live", "staleAfterSeconds": 900 },
+  "wave": {
+    "about": "Display settings for the wave animation. The real wavelength is 12.3 cm at 2.4 GHz and 5.7 cm at 5 GHz. The animation uses a longer wavelength so that single wavefronts are visible.",
+    "wavelengthScale": 10,
+    "speed_m_per_s": 1.6,
+    "model": "beacon",
+    "modelAbout": "beacon = one short pulse per beacon from each access point, brightness from the calibrated signal level. flow = the same with energy-flow arrows. tone = the earlier continuous tone with automatic brightness.",
+    "beaconPeriod_s": 5,
+    "pulseCycles": 2,
+    "beaconAbout": "beaconPeriod_s is how long one real beacon interval (102.4 ms) takes on screen. pulseCycles is the length of one pulse in whole wave periods.",
+    "quality": "auto"
+  },
+  "view": { "explode": 0.8, "autoOrbit": true }
+}

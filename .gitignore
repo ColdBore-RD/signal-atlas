@@ -1,0 +1,18 @@
+# PII / secrets: floor plan, photos, real scans, real SSID/BSSID/MAC, address
+data/private/
+# a user's own layout, networks and devices (docs/custom-layout.md, docs/network-setup.md)
+data/user/
+config.local.json
+photos/
+.env
+.env.*
+!.env.example
+secrets.h
+*.age
+# build and run output
+tmp/
+node_modules/
+__pycache__/
+*.pyc
+# Python environment for tools/trace
+.venv/

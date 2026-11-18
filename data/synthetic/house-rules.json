@@ -1,0 +1,14 @@
+{
+  "about": "Rules for the fully synthetic demo house. Used only when no real floorplan.json exists. Edit and run: node data/synthetic/generate.mjs",
+  "name": "Synthetic demo house",
+  "main": { "width": 12.0, "depth": 9.0 },
+  "garage": { "width": 6.0, "depth": 6.5 },
+  "frontRoomsDepth": 4.5,
+  "stairs": { "x": 7.2, "width": 1.1, "y0": 0.5, "y1": 4.2 },
+  "levels": {
+    "B": { "name": "Basement", "elevation": -2.75, "height": 2.4, "shell": "concrete" },
+    "1": { "name": "Main floor", "elevation": 0, "height": 2.7, "shell": "ext-siding", "front": "ext-brick" },
+    "2": { "name": "Upper floor", "elevation": 3.0, "height": 2.44, "shell": "ext-siding" }
+  },
+  "window": { "width": 1.2, "everyMetres": 4.5, "basementWidth": 0.8, "basementEveryMetres": 7 }
+}

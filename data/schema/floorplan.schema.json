@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "signal-atlas/floorplan.schema.json",
+  "title": "Signal Atlas floor plan",
+  "description": "A house as levels. Each level has an outline, rooms, walls, openings, stairs and fixtures. All coordinates are metres. x runs right and y runs down the page. A point is [x, y]. All levels share one frame, so a point with the same x and y on two levels is one above the other. The geometry carries no radio-specific field: materials are names that data/materials.json explains.",
+  "type": "object",
+  "required": ["schemaVersion", "levels"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "name": { "type": "string" },
+    "units": { "const": "m" },
+    "note": { "type": "string" },
+    "levels": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/level" } }
+  },
+  "definitions": {
+    "point": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+    "polygon": { "type": "array", "minItems": 3, "items": { "$ref": "#/definitions/point" } },
+    "level": {
+      "type": "object",
+      "required": ["id", "name", "elevation", "height", "source", "outline", "walls"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "description": "Short id, for example B, 1 or 2." },
+        "name": { "type": "string", "minLength": 1 },
+        "elevation": { "type": "number", "description": "Height of the floor surface above the main floor, metres." },
+        "height": { "type": "number", "exclusiveMinimum": 0, "description": "Floor to ceiling, metres." },
+        "source": { "enum": ["lidar-scan", "lidar-trace", "measured", "image-trace", "drawn", "synthetic"], "description": "lidar-scan = imported from a LiDAR export by tools/trace/import_polycam.py. lidar-trace = traced by hand over a scan picture. image-trace = traced in the Layout setup panel over a plan image with a scale set by a known length. drawn = drawn in the Layout setup panel without a picture. synthetic levels get a SYNTHETIC LAYOUT label on screen." },
+        "floorMaterial": { "type": "string", "description": "The floor structure under this level. A key of floors in materials.json." },
+        "note": { "type": "string" },
+        "outline": { "$ref": "#/definitions/polygon" },
+        "rooms": { "type": "array", "items": { "$ref": "#/definitions/room" } },
+        "walls": { "type": "array", "items": { "$ref": "#/definitions/wall" } },
+        "openings": { "type": "array", "items": { "$ref": "#/definitions/opening" } },
+        "stairs": { "type": "array", "items": { "$ref": "#/definitions/stairs" } },
+        "fixtures": { "type": "array", "items": { "$ref": "#/definitions/fixture" } }
+      }
+    },
+    "room": {
+      "type": "object",
+      "required": ["id", "name", "polygon"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1, "description": "Rename the room here." },
+        "nameSource": { "enum": ["inferred", "confirmed", "synthetic"] },
+        "nameReason": { "type": "string" },
+        "sourceLabel": { "type": "string", "description": "The label the scanner app gave this room. Kept for tracing only; the page never shows it." },
+        "ceilingHeight": { "type": "number", "exclusiveMinimum": 0, "description": "Floor to ceiling in this room, metres. A room much higher than its level (a double-height hall) is open to the level above." },
+        "ceilingHeightMax": { "type": "number", "exclusiveMinimum": 0, "description": "Highest point of a sloped ceiling, metres." },
+        "ceilingSource": { "enum": ["lidar", "lidar-approx", "measured", "assumed"] },
+        "polygon": { "$ref": "#/definitions/polygon" }
+      }
+    },
+    "wall": {
+      "type": "object",
+      "required": ["a", "b", "material"],
+      "additionalProperties": false,
+      "properties": {
+        "a": { "$ref": "#/definitions/point" },
+        "b": { "$ref": "#/definitions/point" },
+        "material": { "type": "string", "description": "A key of materials in materials.json." },
+        "thickness": { "type": "number", "exclusiveMinimum": 0, "description": "Metres. Leave out to use the thickness of the material." },
+        "origin": { "enum": ["scan", "owner-fix", "gap-closure"], "description": "Leave out for a scanned wall. owner-fix = added because the owner said the scan missed it. gap-closure = added by the importer where the scan left the outer wall open." },
+        "note": { "type": "string" }
+      }
+    },
+    "opening": {
+      "type": "object",
+      "required": ["type", "a", "b", "material"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "enum": ["door", "window", "opening"] },
+        "a": { "$ref": "#/definitions/point" },
+        "b": { "$ref": "#/definitions/point" },
+        "material": { "type": "string" },
+        "state": { "enum": ["open", "closed"], "description": "Doors only. An open door blocks nothing." },
+        "thickness": { "type": "number", "exclusiveMinimum": 0 },
+        "note": { "type": "string" }
+      }
+    },
+    "stairs": {
+      "type": "object",
+      "required": ["id", "polygon", "connects"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "polygon": { "$ref": "#/definitions/polygon" },
+        "connects": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "Ids of the levels this stair opening leads to." },
+        "note": { "type": "string" }
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "required": ["type", "material", "polygon"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "enum": ["fireplace", "appliance", "counter", "other"] },
+        "name": { "type": "string" },
+        "material": { "type": "string" },
+        "polygon": { "$ref": "#/definitions/polygon" },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

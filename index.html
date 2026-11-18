@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'">
+  <title>Signal Atlas</title>
+  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="styles/setup.css">
+</head>
+<body>
+  <canvas id="stage" aria-label="3D view of the house with the Wi-Fi wave field"></canvas>
+  <div id="labels" aria-hidden="true"></div>
+
+  <header id="topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div>
+        <h1>Signal Atlas</h1>
+        <p class="sub"><span id="house-name"></span><span id="house-address"></span></p>
+      </div>
+    </div>
+    <div id="badges"></div>
+    <div class="clock">
+      <span id="clock-mode" class="mode">RECORDED</span>
+      <span id="clock-time" class="num">--:--</span>
+      <span id="clock-date" class="date"></span>
+    </div>
+  </header>
+
+  <aside id="controls" class="panel" aria-label="View controls"></aside>
+  <aside id="metrics" class="panel" aria-label="Metrics"></aside>
+  <aside id="setup" class="panel" aria-label="Setup of networks and devices" hidden></aside>
+
+  <section id="node-card" class="card" hidden aria-live="polite"></section>
+  <section id="legend" class="card" aria-label="Legend"></section>
+  <div id="compass" class="card" title="North"></div>
+  <section id="tray" class="card" aria-label="Roaming devices"></section>
+
+  <footer id="timeline">
+    <div class="tl-buttons" id="tl-buttons"></div>
+    <div class="tl-strip"><canvas id="tl-canvas"></canvas></div>
+  </footer>
+
+  <div id="banner" hidden></div>
+  <div id="perf" hidden></div>
+  <div id="boot">
+    <div class="mark big" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p id="boot-text">Loading the house</p>
+  </div>
+  <script type="module" src="src/app/main.js"></script>
+</body>
+</html>

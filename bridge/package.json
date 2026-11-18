@@ -1,0 +1,9 @@
+{
+  "name": "signal-atlas-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Read-only bridge: MQTT sensors/wifi-atlas/# to server-sent events and an NDJSON file.",
+  "scripts": { "start": "node bridge.mjs" },
+  "dependencies": { "mqtt": "^5.10.0" }
+}
